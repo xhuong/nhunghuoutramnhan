@@ -5,11 +5,13 @@ import Footer from "../../layouts/Footer";
 import Header from "../../layouts/Header";
 import ProductDetailsLayout from "../../layouts/ProductDetailsLayout";
 import { globalData } from "../../data";
+import { getCategoryNameByNameCredentical, getNameCredenticalByCategoryName } from "../../Utils";
 
 function ProductDetailsPage() {
   const { id } = useParams();
   const [dataDetails, setDataDetails] = useState({});
   const [categoryTitle, setCategoryTitle] = useState("");
+  const [nameCategoryCredentical, setNameCategoryCredentical] = useState("");
 
   const findCategoryName = () => {
     const result = globalData.categories.filter((category) => category.id === dataDetails.categoryId);
@@ -32,12 +34,24 @@ function ProductDetailsPage() {
     }
   }, [dataDetails]);
 
+  useEffect(() => {
+    if (categoryTitle) {
+      const result = getNameCredenticalByCategoryName(globalData.categories, categoryTitle);
+      setNameCategoryCredentical(result);
+    }
+  }, [categoryTitle]);
+
   return (
     <React.Fragment>
       <Header />
       <div className="pt-4">
         <div className="container">
-          <Breadcrumb items={[{ name: `${categoryTitle}` }, { name: `${dataDetails?.name}` }]} />
+          <Breadcrumb
+            items={[
+              { title: `${categoryTitle}`, link: `/categories/${nameCategoryCredentical}` },
+              { title: `${dataDetails?.name}` },
+            ]}
+          />
         </div>
       </div>
       <ProductDetailsLayout data={dataDetails} />

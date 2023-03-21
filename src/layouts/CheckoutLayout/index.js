@@ -21,7 +21,7 @@ function CheckoutLayout() {
           {/* heading  */}
           <div className="delivery_heading mb-12">
             <h2 className="capitalize text-md-custom">Nhung hươu trầm nhân</h2>
-            <Breadcrumb items={[{ name: "Giỏ hàng" }, { name: "Thanh toán đơn hàng" }]} />
+            <Breadcrumb items={[{ title: "Giỏ hàng" }, { title: "Thanh toán đơn hàng" }]} />
           </div>
           {/* end heading  */}
           {/* info  */}

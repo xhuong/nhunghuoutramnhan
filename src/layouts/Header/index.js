@@ -9,10 +9,16 @@ import MenuMobile from "../../components/MenuMobile";
 import { useDispatch } from "react-redux";
 import { openMenu } from "../../redux/slices/menuMobileSlice";
 import "./index.scss";
+import SearchForm from "../../components/SearchForm";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleSubmitSearchForm = (value) => {
+    console.log("submitting...", value);
+  };
+
   return (
     <header className="header">
       {/* header with branch  */}
@@ -38,14 +44,19 @@ function Header() {
           </div>
 
           {/* searchbox  */}
-          <div className="header_searchbox_wrappper hidden-xs hidden-sm hidden-md">
+          {/* <div className="hidden-xs hidden-sm hidden-md">
             <form action="" className="header_searchbox">
               <input type="text" placeholder="Tìm kiếm sản phẩm..." className="header_searchbox_input" />
-              <Button size="sm-btn" type="primary">
+              <Button size="sm-btn" type="primary" htmlType="submit">
                 <IoSearch />
               </Button>
             </form>
+          </div> */}
+
+          <div className="hidden-xs hidden-sm hidden-md">
+            <SearchForm onSubmit={handleSubmitSearchForm} />
           </div>
+
           {/* hotline  */}
           <div className="header_hotline hidden-xs hidden-sm hidden-md">
             <div className="header_hotline_icon">
@@ -80,37 +91,37 @@ function Header() {
         <div className="container">
           <ul className="header_navbar_list">
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/introduction">
+              <Link className="header_navbar_item--link" to="/introduce">
                 Giới thiệu
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/1">
+              <Link className="header_navbar_item--link" to="/categories/cao-nhung-huou">
                 Cao Nhung Hươu
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/2">
+              <Link className="header_navbar_item--link" to="/categories/cao-huou">
                 Cao hươu
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/3">
+              <Link className="header_navbar_item--link" to="/categories/cao-ban-long">
                 Cao ban long
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/4">
+              <Link className="header_navbar_item--link" to="/categories/nhung-huou">
                 Nhung hươu
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/5">
+              <Link className="header_navbar_item--link" to="/categories/ruou">
                 Rượu
               </Link>
             </li>
             <li className="header_navbar_item">
-              <Link className="header_navbar_item--link" to="/category/6">
+              <Link className="header_navbar_item--link" to="/categories/mat-ong">
                 Mật ong
               </Link>
             </li>
