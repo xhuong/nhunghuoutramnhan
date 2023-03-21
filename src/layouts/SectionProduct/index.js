@@ -11,7 +11,7 @@ function SectionProduct({ title, products, ...props }) {
       <div className="section_product_wrapper">
         <Row gutter={[16, 16]}>
           {products.map((product) => (
-            <Col xl={8} md={8} sm={12} xs={12}>
+            <Col xl={8} md={8} sm={12} xs={12} key={product.id}>
               <Product
                 id={product.id}
                 name={product.name}

@@ -39,7 +39,7 @@ function ProductDetailsLayout({ data }) {
         </Col>
         <Col xl={8} lg={10} md={12}>
           {/* name  */}
-          <h3 className="font-bold uppercase text-md-custom">{name}</h3>
+          <h1 className="font-bold uppercase text-md-custom">{name}</h1>
 
           <p className="flex items-center">
             <Rate allowHalf disabled value={4.5} />
@@ -137,7 +137,7 @@ function ProductDetailsLayout({ data }) {
               </div>
               <h5 className="text-center capitalize font-bold text-sm-custom">Bảo đảm chất lượng</h5>
               <p className="text-center mt-4 text-xs-custom">
-                Tất cả các sản phẩm tại Nhunghuoutramnhan.com cung cấp đều đảm bảo chất lượng khi đến tay người tiêu
+                Tất cả các sản phẩm tại nhunghuoutramnhan.com cung cấp đều đảm bảo chất lượng khi đến tay người tiêu
                 dùng.
               </p>
             </li>

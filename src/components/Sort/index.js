@@ -1,7 +1,7 @@
-function Sort({ categoryName }) {
+function Sort() {
   return (
     <div className="flex justify-between p-4 bg-gray-100 mb-4 hidden-xs hidden-sm">
-      <h5 className="capitalize">Loại sản phẩm: {categoryName}</h5>
+      <p>Lọc theo: </p>
       <select name="" id="" className="capitalize">
         <option value="">mới nhất</option>
         <option value="">bán chạy</option>

@@ -7,38 +7,68 @@ import PriceRange from "../../components/PriceRange";
 import Sort from "../../components/Sort";
 import Section from "../Section";
 import SectionProduct from "../SectionProduct";
-import { closeModal, openModal } from "../../redux/slices/modalSlice";
+import { openModal } from "../../redux/slices/modalSlice";
 import ButtonSecondary from "../../components/ButtonSecondary";
 import { globalData } from "../../data";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function CategoryLayoutSecondary({ id }) {
+function CategoryLayoutSecondary({ name, ...props }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isActiveModal = useSelector((state) => state.modal.isActive);
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("");
+  const [idCategory, setIdCategory] = useState(null);
   const [products, setProducts] = useState([]);
 
   const findCategoryName = () => {
-    const result = globalData.categories.filter((category) => category.id === id);
-    setTitle(result[0].categoryName);
+    const result = globalData.categories.filter((category) => category.name === name)[0];
+    setTitle(result?.categoryName);
+  };
+
+  const findIdCategoryByName = () => {
+    const result = globalData.categories.filter((category) => category.name === name)[0];
+    setIdCategory(result.id);
   };
 
   const findProductsByCategoryId = () => {
-    const result = globalData.products.filter((product) => product.categoryId === id);
-    setProducts(result);
+    const result = globalData.products.filter((product) => product.categoryId === idCategory);
+    setProducts([...result]);
   };
+
+  // const verifyNameCategory = () => {
+  //   const result = globalData.categories.filter((category) => category.name === name)[0];
+  //   if (!result) {
+  //     navigate("/404");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   verifyNameCategory();
+  // }, [name]);
 
   useEffect(() => {
     findCategoryName();
-    findProductsByCategoryId();
   });
+
+  useEffect(() => {
+    if (name) {
+      findIdCategoryByName();
+    }
+  }, [name]);
+
+  useEffect(() => {
+    if (idCategory) {
+      findProductsByCategoryId();
+    }
+  }, [idCategory]);
 
   return (
     <Section>
       <Row gutter={16}>
         {/* left col  */}
         <Col xl={6} lg={6} className="hidden-xs hidden-sm hidden-md">
-          <CategorySidebar id={id} />
+          <CategorySidebar name={name} />
           <div className="mt-2">
             <PriceRange />
           </div>
@@ -50,8 +80,9 @@ function CategoryLayoutSecondary({ id }) {
 
         {/* right col  */}
         <Col xl={18} lg={18}>
-          <ListProductName id={id} />
-          <Sort categoryName={title} />
+          <ListProductName />
+          <h1 className="text-center py-4 text-lg capitalize">{title} - Nhung Hươu Trầm Nhân</h1>
+          <Sort />
           <SectionProduct title={title} products={products} />
         </Col>
         {/* end right col  */}

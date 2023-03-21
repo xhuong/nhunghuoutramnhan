@@ -6,6 +6,7 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ScrollToTop from "./ScrollToTop";
 import IntroductionPage from "./pages/IntroductionPage";
+import UnavailablePage from "./pages/UnavailablePage";
 
 function App() {
   return (
@@ -13,13 +14,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/category" element={<CategoryPage />} />
-          <Route path="/category/:id" element={<CategoryPage />} />
-          <Route path="/introduction" element={<IntroductionPage />} />
+          <Route path="/categories" element={<CategoryPage />} />
+          <Route path="/categories/:name" element={<CategoryPage />} />
+          <Route path="/introduce" element={<IntroductionPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/product/:id/details" element={<ProductDetailsPage />} />
-          <Route path="*" />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="*" element={<UnavailablePage />} />
         </Routes>
         <ScrollToTop />
       </Router>

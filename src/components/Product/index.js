@@ -12,7 +12,7 @@ function Product({ id, name, imageUrl, oldPrice, newPrice, star, categoryId, dis
     <div
       className="product border-gray"
       onClick={() => {
-        navigate(`/product/${id}/details`);
+        navigate(`/products/${id}`);
       }}
     >
       <span className="product_discount">{discount}</span>
@@ -28,7 +28,7 @@ function Product({ id, name, imageUrl, oldPrice, newPrice, star, categoryId, dis
           </Button>
         </div>
       </div>
-      <h5 className="product_title">{name}</h5>
+      <h3 className="product_title">{name}</h3>
       <div className="product_footer">
         <div className="product_price">
           {newPrice && oldPrice && (
@@ -43,9 +43,11 @@ function Product({ id, name, imageUrl, oldPrice, newPrice, star, categoryId, dis
             </React.Fragment>
           )}
         </div>
-        <span className="product_add_to_cart">
-          <BsCartPlus />
-        </span>
+        {newPrice && oldPrice && (
+          <span className="product_add_to_cart">
+            <BsCartPlus />
+          </span>
+        )}
       </div>
     </div>
   );

@@ -7,21 +7,21 @@ import Header from "../../layouts/Header";
 import { useParams } from "react-router-dom";
 
 function CategoryPage() {
-  const { id } = useParams();
+  const { name } = useParams();
 
-  const [idCategory, setIdCategory] = useState(null);
+  const [nameCategory, setNameCategory] = useState("");
 
   useEffect(() => {
-    if (id) {
-      setIdCategory(Number.parseInt(id));
+    if (name) {
+      setNameCategory(name);
     }
-  }, [id]);
+  }, [name]);
 
   return (
     <React.Fragment>
       <Header />
 
-      <CategoryLayoutSecondary id={idCategory || 1} />
+      <CategoryLayoutSecondary name={nameCategory} />
 
       <AppActions />
 

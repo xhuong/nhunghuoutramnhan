@@ -2,31 +2,37 @@ export const globalData = {
   categories: [
     {
       id: 1,
+      name: "cao-nhung-huou",
       categoryName: "Cao nhung hươu",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
     {
       id: 2,
+      name: "cao-huou",
       categoryName: "Cao hươu",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
     {
       id: 3,
+      name: "cao-ban-long",
       categoryName: "Cao ban long",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
     {
       id: 4,
+      name: "nhung-huou",
       categoryName: "Nhung hươu",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
     {
       id: 5,
+      name: "ruou",
       categoryName: "Rượu",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
     {
       id: 6,
+      name: "mat-ong",
       categoryName: "Mật ong",
       imageUrl: require("../assets/images/categories/nhung_huou.png"),
     },
